@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.controllers.AuthentificationUIController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <SplitPane dividerPositions="0.4683333333333333" focusTraversable="true" layoutX="-208.0" layoutY="-105.0" prefHeight="181.0" prefWidth="602.0">
+      <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="368.0" prefWidth="276.0">
+          <children>
+            <Pane layoutX="-13.0" layoutY="-25.0" prefHeight="211.0" prefWidth="210.0">
+              <children>
+                <PasswordField id="password" fx:id="registerPassword" layoutX="50.0" layoutY="106.0" prefWidth="200.0" promptText="Password" />
+                <TextField id="username" fx:id="registerUsername" layoutX="50.0" layoutY="64.0" prefWidth="200.0" promptText="Username" />
+                <Label layoutX="135.0" layoutY="38.0" text="Register" />
+                <Button id="loginButton" fx:id="registerButton" layoutX="122.0" layoutY="154.0" mnemonicParsing="false" onAction="#loginUser" text="Register" />
+              </children>
+            </Pane>
+          </children>
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="368.0" prefWidth="280.0">
+          <children>
+            <Pane layoutX="1.0" layoutY="-25.0" prefHeight="226.0" prefWidth="235.0">
+              <children>
+                <PasswordField id="password" fx:id="loginPassword" layoutX="50.0" layoutY="106.0" prefWidth="200.0" promptText="Password" />
+                <TextField id="username" fx:id="loginUsername" layoutX="50.0" layoutY="64.0" prefWidth="200.0" promptText="Username" />
+                <Label layoutX="135.0" layoutY="38.0" text="Login" />
+                <Button fx:id="loginButton" layoutX="122.0" layoutY="154.0" mnemonicParsing="false" onAction="#loginUser" text="Login" />
+              </children>
+            </Pane>
+          </children>
+        </AnchorPane>
+      </items>
+    </SplitPane>
+  </children>
+</AnchorPane>
