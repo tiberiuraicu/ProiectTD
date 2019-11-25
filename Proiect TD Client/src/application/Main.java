@@ -13,7 +13,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			// Read file fxml and draw interface.
-			Parent root = FXMLLoader.load(getClass().getResource("/application/scenes/Login.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/application/scenes/Authentification.fxml"));
 
 			primaryStage.setTitle("My Application");
 			primaryStage.setScene(new Scene(root));

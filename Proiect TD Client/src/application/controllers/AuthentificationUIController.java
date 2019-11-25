@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
 
 public class AuthentificationUIController implements Initializable {
@@ -31,6 +32,9 @@ public class AuthentificationUIController implements Initializable {
 
 	@FXML
 	private PasswordField registerPassword;
+	
+	@FXML
+	private SplitPane authentificationPanel;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -44,13 +48,14 @@ public class AuthentificationUIController implements Initializable {
 	public void loginUser(ActionEvent event) throws ClassNotFoundException, IOException, InterruptedException {
 
 		
-		socketClient.login(loginUsername.getText(), loginPassword.getText());
-
+		socketClient.loginUser(loginUsername.getText(), loginPassword.getText());
+		authentificationPanel.setVisible(false);
 	}
 	
 	public void registerUser(ActionEvent event) throws ClassNotFoundException, IOException, InterruptedException {
 
-		socketClient.login(registerUsername.getText(), registerPassword.getText());
+		socketClient.registerUser(registerUsername.getText(), registerPassword.getText());
+		
 
 	}
 
