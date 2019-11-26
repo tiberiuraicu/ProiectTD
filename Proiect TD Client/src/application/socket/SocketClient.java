@@ -13,11 +13,11 @@ import java.net.UnknownHostException;
  * @author pankaj
  *
  */
+
 public class SocketClient {
 	Socket socket = null;
 	ObjectOutputStream oos = null;
 	ObjectInputStream ois = null;
-
 
 
 	public void loginUser(String loginUsername, String loginPassword)
@@ -53,6 +53,24 @@ public class SocketClient {
 		System.out.println("Sending request to Socket Server");
 		oos.writeObject(registerUsername + "," + registerPassword);
 		// read the server response message
+
+		ois = new ObjectInputStream(socket.getInputStream());
+		String message = (String) ois.readObject();
+		System.out.println("Message: " + message);
+		// close resources
+		ois.close();
+		oos.close();
+		Thread.sleep(100);
+
+	}
+	
+	public void waitForMessages()
+			throws IOException, ClassNotFoundException, InterruptedException {
+		InetAddress host = InetAddress.getLocalHost();
+
+		// establish socket connection to server
+		socket = new Socket(host.getHostName(), 9876);
+		
 
 		ois = new ObjectInputStream(socket.getInputStream());
 		String message = (String) ois.readObject();

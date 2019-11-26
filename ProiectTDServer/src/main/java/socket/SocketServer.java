@@ -42,6 +42,22 @@ public class SocketServer {
             //terminate the server if client sends exit request
             if(message.equalsIgnoreCase("exit")) break;
         }
+        
+       
+//            System.out.println("Waiting for the client request");
+//            //creating socket and waiting for client connection
+//            Socket socket = server.accept();
+//            //read from socket to ObjectInputStream object
+//          
+//            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+//            //write object to Socket
+//            oos.writeObject("Hi Client ");
+//            //close resources
+//            
+//            oos.close();
+//            socket.close();
+//            //terminate the server if client sends exit request
+       
         System.out.println("Shutting down Socket server!!");
         //close the ServerSocket object
         server.close();

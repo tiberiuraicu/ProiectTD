@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="397.0" prefWidth="688.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.controllers.UserPageController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <Pane layoutX="14.0" layoutY="46.0" prefHeight="337.0" prefWidth="347.0">
+      <children>
+        <ToggleButton fx:id="participation" layoutX="296.0" layoutY="313.0" mnemonicParsing="false" text="Invite user" />
+        <ListView fx:id="invitations" layoutX="42.0" layoutY="97.0" prefHeight="200.0" prefWidth="200.0" />
+        <TextArea layoutX="193.0" layoutY="-18.0" prefHeight="105.0" prefWidth="281.0" promptText="Write a message" wrapText="true" />
+        <ListView id="invitations" layoutX="402.0" layoutY="97.0" prefHeight="200.0" prefWidth="200.0" />
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>

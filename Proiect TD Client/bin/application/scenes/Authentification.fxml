@@ -5,7 +5,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="403.0" prefWidth="731.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.controllers.AuthentificationUIController">
+<AnchorPane fx:id="mainPanel" prefHeight="403.0" prefWidth="731.0" xmlns:fx="http://javafx.com/fxml/1" 
+xmlns="http://javafx.com/javafx/2.2" fx:controller="application.controllers.AuthentificationUIController">
   <!-- TODO Add Nodes -->
   <children>
     <SplitPane  fx:id="authentificationPanel" dividerPositions="0.4732510288065844" focusTraversable="true" layoutX="0.0" layoutY="-1.0" prefHeight="405.0" prefWidth="731.0">
