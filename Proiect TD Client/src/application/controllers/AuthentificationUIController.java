@@ -58,7 +58,7 @@ public class AuthentificationUIController implements Initializable {
 		socketClient.loginUser(loginUsername.getText(), loginPassword.getText());
 
 		mainPanel.getChildren().clear();
-		mainPanel.getChildren().addAll(loadFXML("/application/scenes/AdminPage.fxml"));
+		mainPanel.getChildren().addAll(loadFXML("/application/scenes/UserPage.fxml"));
 	}
 
 	public void registerUser(ActionEvent event) throws ClassNotFoundException, IOException, InterruptedException {
