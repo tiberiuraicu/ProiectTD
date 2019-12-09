@@ -6,6 +6,8 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import DAO.UserDAO;
+
 /**
  * This class implements java Socket server
  * @author pankaj
@@ -17,8 +19,9 @@ public class SocketServer {
     private static ServerSocket server;
     //socket server port on which it will listen
     private static int port = 9876;
-    
+    static SocketFunctions socketFunctions= new  SocketFunctions();
     public static void main(String args[]) throws IOException, ClassNotFoundException{
+    	
         //create the socket server object
         server = new ServerSocket(port);
         //keep listens indefinitely until receives 'exit' call or program terminates
@@ -32,9 +35,10 @@ public class SocketServer {
             String message = (String) ois.readObject();
             System.out.println("Message Received: " + message);
             //create ObjectOutputStream object
+            message= socketFunctions.processMessage(message);
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
             //write object to Socket
-            oos.writeObject("Hi Client "+message);
+            oos.writeObject(message);
             //close resources
             ois.close();
             oos.close();
@@ -42,25 +46,11 @@ public class SocketServer {
             //terminate the server if client sends exit request
             if(message.equalsIgnoreCase("exit")) break;
         }
+   
         
-       
-//            System.out.println("Waiting for the client request");
-//            //creating socket and waiting for client connection
-//            Socket socket = server.accept();
-//            //read from socket to ObjectInputStream object
-//          
-//            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-//            //write object to Socket
-//            oos.writeObject("Hi Client ");
-//            //close resources
-//            
-//            oos.close();
-//            socket.close();
-//            //terminate the server if client sends exit request
-       
         System.out.println("Shutting down Socket server!!");
         //close the ServerSocket object
-        server.close();
+        //server.close();
     }
     
 }

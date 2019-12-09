@@ -29,7 +29,7 @@ public class SocketClient {
 		// write to socket using ObjectOutputStream
 		oos = new ObjectOutputStream(socket.getOutputStream());
 		System.out.println("Sending request to Socket Server");
-		oos.writeObject(loginUsername + "," + loginPassword);
+		oos.writeObject(loginUsername + "," + loginPassword + ",login");
 		// read the server response message
 
 		ois = new ObjectInputStream(socket.getInputStream());
@@ -51,7 +51,7 @@ public class SocketClient {
 		// write to socket using ObjectOutputStream
 		oos = new ObjectOutputStream(socket.getOutputStream());
 		System.out.println("Sending request to Socket Server");
-		oos.writeObject(registerUsername + "," + registerPassword);
+		oos.writeObject(registerUsername + "," + registerPassword + ",register");
 		// read the server response message
 
 		ois = new ObjectInputStream(socket.getInputStream());
