@@ -1,4 +1,6 @@
-package DAO;
+package DAOt;
+
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -9,7 +11,7 @@ import model.User;
 
 public class EventDAO {
 
-	public void createEvent( String codLocatie, String name) {
+	public void createEvent( String codLocatie, String name, byte[] file) {
 
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("Eclipselink_JPA");
 
@@ -20,6 +22,7 @@ public class EventDAO {
 	
 		event.setCodLocatie(codLocatie);;
 		event.setName(name);;
+		event.setFile(file);
 
 		entitymanager.persist(event);
 		entitymanager.getTransaction().commit();
@@ -40,7 +43,7 @@ public class EventDAO {
 		emfactory.close();
 	}
 
-	public Event findEvent(String id) {
+	public Event findEvent(int id) {
 
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("Eclipselink_JPA");
 		EntityManager entitymanager = emfactory.createEntityManager();
@@ -63,5 +66,17 @@ public class EventDAO {
 
 		entitymanager.close();
 		emfactory.close();
+	}
+	
+	public List<Event> findAllEvents(){
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("Eclipselink_JPA");
+
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		
+		List<Event> users = (List<Event>)entitymanager.createQuery("SELECT c FROM Event c")
+				 .getResultList(); 
+		return users;
+		
 	}
 }

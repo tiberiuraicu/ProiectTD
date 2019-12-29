@@ -20,6 +20,10 @@ public class User implements Serializable {
 
 	private String password;
 
+	private String role;
+
+	private String status;
+
 	private String username;
 
 	public User() {
@@ -39,6 +43,22 @@ public class User implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getRole() {
+		return this.role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public String getStatus() {
+		return this.status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public String getUsername() {

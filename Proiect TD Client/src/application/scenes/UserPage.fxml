@@ -10,9 +10,10 @@
   <children>
     <Pane layoutX="14.0" layoutY="46.0" prefHeight="337.0" prefWidth="347.0">
       <children>
-        <ToggleButton fx:id="participation" layoutX="104.0" layoutY="14.0" mnemonicParsing="false" text="Doresc sa particip" />
-        <ListView fx:id="invitations" layoutX="61.0" layoutY="87.0" prefHeight="200.0" prefWidth="200.0" />
-        <TextArea layoutX="347.0" layoutY="-18.0" prefHeight="305.0" prefWidth="281.0" wrapText="true" />
+        <ToggleButton fx:id="participation" layoutX="104.0" layoutY="-18.0" mnemonicParsing="false" onAction="#waitForInvitations" text="Doresc sa particip" />
+        <ListView fx:id="invitations" layoutX="61.0" layoutY="87.0" onMouseClicked="#showInvitationContent" prefHeight="200.0" prefWidth="200.0" />
+        <TextArea fx:id="invitationContent" layoutX="347.0" layoutY="-18.0" prefHeight="305.0" prefWidth="281.0" wrapText="true" />
+        <Button fx:id="reserveSpot" layoutX="104.0" layoutY="58.0" mnemonicParsing="false" onAction="#reserveASpot" prefWidth="115.0" text="Rezerva loc" />
       </children>
     </Pane>
   </children>

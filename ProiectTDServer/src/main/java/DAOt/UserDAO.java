@@ -1,4 +1,6 @@
-package DAO;
+package DAOt;
+
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -8,7 +10,7 @@ import model.User;
 
 public class UserDAO {
 
-	public void createUser(String username, String password) {
+	public void createUser(String username, String password,String status) {
 
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("Eclipselink_JPA");
 
@@ -18,7 +20,9 @@ public class UserDAO {
 		User user = new User();
 		user.setUsername(username);
 		user.setPassword(password);
-
+		user.setStatus(password);
+		user.setRole("user");
+		
 		entitymanager.persist(user);
 		entitymanager.getTransaction().commit();
 
@@ -74,5 +78,16 @@ public class UserDAO {
 
 		entitymanager.close();
 		emfactory.close();
+	}
+	public List<User> findAllUsers(){
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("Eclipselink_JPA");
+
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		
+		List<User> users = (List<User>)entitymanager.createQuery("SELECT c FROM User c")
+				 .getResultList(); 
+		return users;
+		
 	}
 }

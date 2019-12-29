@@ -20,7 +20,8 @@ public class Event implements Serializable {
 
 	private String codLocatie;
 
-	private String file;
+	@Lob
+	private byte[] file;
 
 	private String name;
 
@@ -43,11 +44,11 @@ public class Event implements Serializable {
 		this.codLocatie = codLocatie;
 	}
 
-	public String getFile() {
+	public byte[] getFile() {
 		return this.file;
 	}
 
-	public void setFile(String file) {
+	public void setFile(byte[] file) {
 		this.file = file;
 	}
 

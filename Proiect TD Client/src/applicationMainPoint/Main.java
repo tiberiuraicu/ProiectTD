@@ -1,4 +1,4 @@
-package application;
+package applicationMainPoint;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +15,7 @@ public class Main extends Application {
 			// Read file fxml and draw interface.
 			Parent root = FXMLLoader.load(getClass().getResource("/application/scenes/Authentification.fxml"));
 
-			primaryStage.setTitle("My Application");
+			primaryStage.setTitle("Authentification");
 			primaryStage.setScene(new Scene(root));
 			primaryStage.show();
 

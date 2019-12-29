@@ -3,7 +3,6 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 
-
 /**
  * The persistent class for the `status_users&events` database table.
  * 
