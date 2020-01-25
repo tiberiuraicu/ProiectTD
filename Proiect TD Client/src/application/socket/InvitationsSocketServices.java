@@ -6,13 +6,13 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 
-public class InvitationsSocket {
+public class InvitationsSocketServices {
 
 	Socket socket = null;
 	ObjectOutputStream oos = null;
 	ObjectInputStream ois = null;
 
-	public InvitationsSocket() {
+	public InvitationsSocketServices() {
 		try {
 			InetAddress host = InetAddress.getLocalHost();
 

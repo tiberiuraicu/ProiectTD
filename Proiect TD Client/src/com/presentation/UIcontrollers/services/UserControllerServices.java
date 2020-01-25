@@ -1,4 +1,4 @@
-package application.controllers.services;
+package com.presentation.UIcontrollers.services;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -7,11 +7,11 @@ import java.util.Map;
 
 import org.json.JSONObject;
 
-import application.socket.InvitationsSocket;
+import application.socket.InvitationsSocketServices;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 
-public class UserServices {
+public class UserControllerServices {
 
 	Map<String, String> invitationsContent = new HashMap<String, String>();
 	Map<JSONObject, JSONObject> invitationsObjects = new HashMap<JSONObject, JSONObject>();
@@ -24,7 +24,7 @@ public class UserServices {
 			@Override
 			public void run() {
 				try {
-					InvitationsSocket invitationsSocket = new InvitationsSocket();
+					InvitationsSocketServices invitationsSocket = new InvitationsSocketServices();
 
 					do {
 
@@ -79,7 +79,7 @@ public class UserServices {
 	}
 
 	public void confirmSpotOnEvent(String username, String selectedEvent) throws ClassNotFoundException, IOException {
-		InvitationsSocket invitationsSocket = new InvitationsSocket();
+		InvitationsSocketServices invitationsSocket = new InvitationsSocketServices();
 		JSONObject confirmSpotOnEventObject = new JSONObject();
 		Iterator it = invitationsObjects.entrySet().iterator();
 		while (it.hasNext()) {

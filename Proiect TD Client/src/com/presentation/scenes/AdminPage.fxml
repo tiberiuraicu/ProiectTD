@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="692.0" prefWidth="1063.0" styleClass="root2" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.presentation.UIcontrollers.AdminPageController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <Pane fx:id="createEventPane" layoutX="45.0" layoutY="51.0" prefHeight="274.0" prefWidth="975.0">
+      <children>
+        <TextField fx:id="locationCode" layoutX="110.0" layoutY="184.0" prefHeight="47.9609375" prefWidth="528.0" styleClass="input" promptText="Event name"/>
+        <TextField fx:id="eventName" layoutX="110.0" layoutY="106.0" prefHeight="47.9609375" prefWidth="528.0" styleClass="input" promptText="Location code"/>
+        <Button id="createEvent" fx:id="createEventButton" layoutX="757.0" layoutY="131.0" mnemonicParsing="false" onAction="#createEvent" prefHeight="35.0" prefWidth="119.0" styleClass="btn" text="Create event">
+          <font>
+            <Font name="System Bold" size="15.0" fx:id="x1" />
+          </font>
+        </Button>
+        <Button fx:id="chooseFile" font="$x1" layoutX="110.0" layoutY="37.0" mnemonicParsing="false" onAction="#chooseFile" prefHeight="44.0" prefWidth="528.0" styleClass="btn" text="Choose file" />
+        <Label layoutX="85.0" layoutY="257.0" minHeight="35.0" prefHeight="35.000099999997474" prefWidth="105.0" text="EVENTS">
+          <font>
+            <Font name="System Bold" size="25.0" fx:id="x2" />
+          </font>
+        </Label>
+        <Label font="$x2" layoutX="726.0" layoutY="260.0" minHeight="35.0" prefHeight="35.0" prefWidth="196.99990000000253" text="AVIABLE USERS" />
+      </children>
+    </Pane>
+    <Pane layoutX="38.0" layoutY="334.0" prefHeight="345.0" prefWidth="975.0">
+      <children>
+        <Button fx:id="invite" font="$x1" layoutX="420.0" layoutY="258.0" mnemonicParsing="false" onAction="#inviteUser" prefHeight="30.9609375" prefWidth="140.0" styleClass="btn" text="Invite user" />
+        <Button fx:id="showUsersAndEvents" font="$x1" layoutX="394.0" layoutY="63.0" mnemonicParsing="false" onAction="#showAllUsersAndEvents" prefHeight="47.9609375" prefWidth="187.0" styleClass="btn" text="Show users and Events" />
+        <ListView fx:id="eventsList" layoutX="14.0" layoutY="21.0" prefHeight="304.0" prefWidth="263.0" styleClass="list" />
+        <ListView fx:id="usersList" layoutX="694.0" layoutY="21.0" prefHeight="304.0" prefWidth="263.0" styleClass="list" />
+      </children>
+    </Pane>
+    <Button fx:id="closeButton" font="$x2" layoutX="999.0" layoutY="0.0" minWidth="43.0" mnemonicParsing="false" onAction="#closeButtonAction" prefHeight="51.000099999997474" prefWidth="64.0" styleClass="closeButton" text="X" />
+    <Label layoutX="17.0" layoutY="14.0" minHeight="35.0" prefHeight="35.0" prefWidth="252.0" text="CINEMA PLANNER">
+      <font>
+        <Font name="System Bold" size="28.0" />
+      </font>
+    </Label>
+  </children>
+</AnchorPane>

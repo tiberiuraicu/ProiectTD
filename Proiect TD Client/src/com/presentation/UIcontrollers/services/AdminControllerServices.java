@@ -1,20 +1,24 @@
-package application.controllers.services;
+package com.presentation.UIcontrollers.services;
 
 import java.io.IOException;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import application.socket.AuthentificationSocket;
-import application.socket.InvitationsSocket;
+
+import application.socket.AdminSocketServices;
+import application.socket.AuthentificationSocketServices;
+import application.socket.InvitationsSocketServices;
 import javafx.scene.control.ListView;
 
-public class AdminServices {
-	InvitationsSocket invitationsSocket = new InvitationsSocket();
-	AuthentificationSocket authentificationSocket = new AuthentificationSocket();
+public class AdminControllerServices {
+
+	InvitationsSocketServices invitationsSocket = new InvitationsSocketServices();
+	
+	AdminSocketServices adminSocketServices = new AdminSocketServices();
 
 	public void getAndShowAllUsersAndEvents(ListView<String> eventsList, ListView<String> usersList)
 			throws ClassNotFoundException, IOException, InterruptedException {
 
-		String allUsersAndEventsAsString = authentificationSocket.getAllUsersAndEvents();
+		String allUsersAndEventsAsString = adminSocketServices.getAllUsersAndEvents();
 
 		JSONObject json = new JSONObject(allUsersAndEventsAsString);
 		JSONArray events = (JSONArray) json.get("events");
@@ -31,20 +35,21 @@ public class AdminServices {
 		}
 	}
 
-	public void createEvent(String eventName, String file,String locationCode) throws ClassNotFoundException, IOException, InterruptedException {
+	public void createEvent(String eventName, String file, String locationCode)
+			throws ClassNotFoundException, IOException, InterruptedException {
 
 		JSONObject eventObject = new JSONObject();
 		eventObject.put("type", "createEvent");
 		eventObject.put("eventName", eventName);
 		eventObject.put("locationCode", locationCode);
 		eventObject.put("file", file);
-		authentificationSocket.createEvent(eventObject.toString());
+		adminSocketServices.createEvent(eventObject.toString());
 	}
 
 	public void inviteUser(ListView<String> eventsList, ListView<String> usersList)
 			throws ClassNotFoundException, IOException, InterruptedException {
 
-		String allUsersAndEventsAsString = authentificationSocket.getAllUsersAndEvents();
+		String allUsersAndEventsAsString = adminSocketServices.getAllUsersAndEvents();
 
 		JSONObject json = new JSONObject(allUsersAndEventsAsString);
 		JSONArray events = (JSONArray) json.get("events");

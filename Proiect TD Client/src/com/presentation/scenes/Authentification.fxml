@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="mainPanel" prefHeight="500.0"
+	prefWidth="870.0" styleClass="root1" xmlns:fx="http://javafx.com/fxml/1"
+	xmlns="http://javafx.com/javafx/2.2"
+	fx:controller="com.presentation.UIcontrollers.AuthentificationUIController">
+	<!-- TODO Add Nodes -->
+	<children>
+		<Pane layoutX="460.0" layoutY="20.0" prefHeight="402.0"
+			prefWidth="353.0">
+			<children>
+				<AnchorPane layoutX="73.0" layoutY="6.0" minHeight="0.0"
+					minWidth="0.0" prefHeight="405.0" prefWidth="337.0">
+					<children>
+						<Pane layoutX="-76.0" layoutY="81.0" prefHeight="226.0"
+							prefWidth="337.0">
+							<children>
+								<PasswordField id="password" fx:id="loginPassword"
+									layoutX="98.0" layoutY="137.0" prefHeight="37.9609375"
+									prefWidth="216.99997792968497" promptText="Password" />
+								<TextField id="username" fx:id="loginUsername"
+									layoutX="98.0" layoutY="84.0" prefHeight="36.9609375"
+									prefWidth="217.0" promptText="Username" />
+								<Label layoutX="180.0" layoutY="43.0" text="Login">
+									<font>
+										<Font name="System Bold" size="20.0" fx:id="x1" />
+									</font>
+								</Label>
+							</children>
+						</Pane>
+						<Button fx:id="loginButton" layoutX="81.0" layoutY="290.0"
+							mnemonicParsing="false" onAction="#loginUser" prefHeight="29.0"
+							prefWidth="99.0" styleClass="btn" text="Login">
+							<font>
+								<Font name="System Bold" size="15.0" fx:id="x2" />
+							</font>
+						</Button>
+						<Button fx:id="closeButton" layoutX="280.0" layoutY="-25.0"
+							mnemonicParsing="false" onAction="#closeButtonAction"
+							styleClass="closeButton" text="X">
+							<font>
+								<Font size="25.0" />
+							</font>
+						</Button>
+					</children>
+				</AnchorPane>
+			</children>
+		</Pane>
+		<Pane layoutX="6.0" layoutY="6.0" prefHeight="399.0"
+			prefWidth="337.0">
+			<children>
+				<AnchorPane layoutX="31.0" layoutY="14.0" minHeight="0.0"
+					minWidth="0.0" prefHeight="368.0" prefWidth="276.0">
+					<children>
+						<Pane layoutX="-14.0" layoutY="64.0" prefHeight="249.0"
+							prefWidth="306.0">
+							<children>
+								<PasswordField id="password"
+									fx:id="registerPassword" layoutX="73.0" layoutY="171.0"
+									prefHeight="36.9609375" prefWidth="217.0" promptText="Password" />
+								<TextField id="username" fx:id="registerUsername"
+									layoutX="73.0" layoutY="114.0" prefHeight="36.9609375"
+									prefWidth="217.0" promptText="Username" />
+								<Label font="$x1" layoutX="142.0" layoutY="61.0"
+									prefHeight="36.9609375" prefWidth="79.0" text="Register" />
+							</children>
+						</Pane>
+						<Button id="loginButton" fx:id="registerButton" font="$x2"
+							layoutX="118.0" layoutY="303.0" mnemonicParsing="false"
+							onAction="#registerUser" prefHeight="29.0" prefWidth="99.0"
+							styleClass="btn" text="Register" />
+					</children>
+				</AnchorPane>
+			</children>
+		</Pane>
+		<Label layoutX="297.0" layoutY="56.0" prefHeight="40.0"
+			prefWidth="276.0" text="CINEMA PLANNER">
+			<font>
+				<Font name="System Bold" size="30.0" />
+			</font>
+		</Label>
+	</children>
+</AnchorPane>

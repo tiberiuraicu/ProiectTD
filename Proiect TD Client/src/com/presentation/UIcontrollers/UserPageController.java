@@ -1,17 +1,20 @@
-package application.controllers;
+package com.presentation.UIcontrollers;
 
 import java.io.IOException;
-import application.controllers.services.UserServices;
+
+import com.presentation.UIcontrollers.services.UserControllerServices;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class UserPageController {
 
-	UserServices userServices = new UserServices();
+	UserControllerServices userServices = new UserControllerServices();
 
 	@FXML
 	private ListView<String> invitations;
@@ -25,6 +28,17 @@ public class UserPageController {
 	@FXML
 	private TextArea invitationContent;
 
+	@FXML 
+	private Button closeButton;
+
+	@FXML
+	private void closeButtonAction(){
+	    // get a handle to the stage
+	    Stage stage = (Stage) closeButton.getScene().getWindow();
+	    // do what you have to do
+	    stage.close();
+	}
+	
 	private String username;
 
 	public String getUsername() {

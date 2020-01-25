@@ -1,4 +1,4 @@
-package application.controllers;
+package com.presentation.UIcontrollers;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -6,12 +6,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import application.controllers.services.AdminServices;
+
+import com.presentation.UIcontrollers.services.AdminControllerServices;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class AdminPageController {
 
@@ -29,16 +32,27 @@ public class AdminPageController {
 
 	@FXML
 	private TextField locationCode;
+	
+	@FXML 
+	private Button closeButton;
+
+	@FXML
+	private void closeButtonAction(){
+	    // get a handle to the stage
+	    Stage stage = (Stage) closeButton.getScene().getWindow();
+	    // do what you have to do
+	    stage.close();
+	}
 
 	String fileContent="";
 
 	public void showAllUsersAndEvents() throws ClassNotFoundException, IOException, InterruptedException {
-		AdminServices adminServices = new AdminServices();
+		AdminControllerServices adminServices = new AdminControllerServices();
 		adminServices.getAndShowAllUsersAndEvents(eventsList, usersList);
 	}
 
 	public void inviteUser() throws ClassNotFoundException, IOException, InterruptedException {
-		AdminServices adminServices = new AdminServices();
+		AdminControllerServices adminServices = new AdminControllerServices();
 		adminServices.inviteUser(eventsList, usersList);
 	}
 
@@ -59,7 +73,7 @@ public class AdminPageController {
 	}
 
 	public void createEvent() throws ClassNotFoundException, IOException, InterruptedException {
-		AdminServices adminServices = new AdminServices();
+		AdminControllerServices adminServices = new AdminControllerServices();
 		adminServices.createEvent(eventName.getText(), fileContent, locationCode.getText());
 	}
 
