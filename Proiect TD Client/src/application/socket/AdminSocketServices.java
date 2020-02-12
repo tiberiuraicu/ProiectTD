@@ -37,8 +37,6 @@ public class AdminSocketServices {
 		ois = new ObjectInputStream(socket.getInputStream());
 		String registerResult = (String) ois.readObject();
 
-		System.out.println(registerResult);
-
 		// close resources
 		ois.close();
 		oos.close();

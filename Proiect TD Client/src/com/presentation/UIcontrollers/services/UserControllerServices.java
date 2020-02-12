@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import application.socket.InvitationsSocketServices;
@@ -19,6 +20,53 @@ public class UserControllerServices {
 	public void waitForInvitations(ListView<String> invitations, String loggedInUsername)
 			throws ClassNotFoundException, IOException {
 
+		Thread getAllInvites = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				try {
+					InvitationsSocketServices invitationsSocket = new InvitationsSocketServices();
+					String eventsForUser = invitationsSocket
+							.getEventsForUser(" ,getAllEventsForUser," + loggedInUsername);
+
+					if (eventsForUser != null) {
+						JSONObject invitationObject = new JSONObject(eventsForUser);
+						JSONObject user = (JSONObject) invitationObject.get("user");
+						JSONArray listOfUserEvents = (JSONArray) invitationObject.get("events");
+
+						if (user.get("userName").equals(loggedInUsername)) {
+
+							for (int i = 0; i < listOfUserEvents.length(); i++) {
+								JSONObject event = listOfUserEvents.getJSONObject(i);
+
+								invitations.getItems().add(invitations.getItems().size(),
+										(String) event.get("eventName"));
+								String fileAsString = event.get("file").toString();
+
+								String[] byteValues = fileAsString.substring(1, fileAsString.length() - 1).split(",");
+								byte[] bytes = new byte[byteValues.length];
+
+								for (int j = 0, len = bytes.length; j < len; j++) {
+									bytes[j] = Byte.parseByte(byteValues[j].trim());
+								}
+
+								String str = new String(bytes);
+
+								invitationsContent.put((String) event.get("eventName"), str);
+								invitationsObjects.put(user, event);
+							}
+
+						}
+					}
+
+				} catch (ClassNotFoundException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		getAllInvites.start();
+
 		Thread getMessages = new Thread(new Runnable() {
 
 			@Override
@@ -29,7 +77,6 @@ public class UserControllerServices {
 					do {
 
 						String invitation = invitationsSocket.waitForInvitations();
-
 						if (invitation != null) {
 							JSONObject invitationObject = new JSONObject(invitation);
 							JSONObject userToBeInvited = (JSONObject) invitationObject.get("user");
@@ -54,12 +101,12 @@ public class UserControllerServices {
 							}
 						}
 
-						break;
+						// break;
 
 					} while (true);
 				} catch (ClassNotFoundException | IOException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
 				}
 			}
 		});
@@ -78,7 +125,8 @@ public class UserControllerServices {
 		}
 	}
 
-	public void confirmSpotOnEvent(String username, String selectedEvent) throws ClassNotFoundException, IOException {
+	public void confirmSpotOnEvent(String username, ListView<String> invitations)
+			throws ClassNotFoundException, IOException {
 		InvitationsSocketServices invitationsSocket = new InvitationsSocketServices();
 		JSONObject confirmSpotOnEventObject = new JSONObject();
 		Iterator it = invitationsObjects.entrySet().iterator();
@@ -87,8 +135,9 @@ public class UserControllerServices {
 			JSONObject user = (JSONObject) pair.getKey();
 			JSONObject event = (JSONObject) pair.getValue();
 
-			if (username.equals(user.get("userName"))&& selectedEvent.equals(event.get("eventName"))) {
-				
+			if (username.equals(user.get("userName"))
+					&& invitations.getSelectionModel().getSelectedItem().equals(event.get("eventName"))) {
+
 				confirmSpotOnEventObject.put("type", "confirmSpotOnEvent");
 				confirmSpotOnEventObject.put("eventId", event.get("eventId"));
 				confirmSpotOnEventObject.put("userId", user.get("userId"));

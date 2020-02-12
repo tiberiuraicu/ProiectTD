@@ -17,18 +17,7 @@ public class SocketServer {
 	static SocketFunctions socketFunctions = new SocketFunctions();
 
 	public static void main(String args[]) throws IOException, ClassNotFoundException {
-//    	EventDAO eventDAO= new EventDAO();
-		String path = "C:\\Users\\Tiberiu\\Desktop\\ttt.txt";
 
-		byte[] bFile = Files.readAllBytes(Paths.get(path));
-
-		String textfromFile = new String(bFile);
-//    	
-//       eventDAO.createEvent("ddd", "name",Files.readAllBytes(Paths.get(path)));
-//       
-//       for (int i = 0; i < bFile.length; i++) {
-//           System.out.print((char) bFile[i]);
-//       }
 		Thread auth = new Thread(new Runnable() {
 			// static ServerSocket variable
 			private ServerSocket serverLogin;

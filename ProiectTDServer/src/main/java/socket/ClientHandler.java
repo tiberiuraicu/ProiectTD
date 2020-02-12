@@ -27,8 +27,7 @@ public class ClientHandler implements Runnable {
 				ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
 				// convert ObjectInputStream object to String
 				String message = (String) ois.readObject();
-				System.out.println("Message Received: " + message);
-				// create ObjectOutputStream object
+								// create ObjectOutputStream object
 				message = socketFunctions.processInviteMessage(message);
 
 				for (ClientHandler clientHandler : clients) {
@@ -36,7 +35,7 @@ public class ClientHandler implements Runnable {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			//System.out.println("connection reset");
 		}
 
@@ -50,7 +49,7 @@ public class ClientHandler implements Runnable {
 			oos.writeObject(message);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		// close resources
 		// ois.close();

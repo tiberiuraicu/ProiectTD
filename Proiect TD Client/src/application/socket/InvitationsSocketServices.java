@@ -30,7 +30,6 @@ public class InvitationsSocketServices {
 	}
 
 	public String waitForInvitations() throws IOException, ClassNotFoundException {
-		
 		// read the server response message
 		ois = new ObjectInputStream(socket.getInputStream());
 
@@ -75,6 +74,30 @@ public class InvitationsSocketServices {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		oos.writeObject(invitationString);
+
+		// read the server response message
+		ois = new ObjectInputStream(socket.getInputStream());
+
+		return (String) ois.readObject();
+	}
+	
+	public String getEventsForUser(String invitationString) throws IOException, ClassNotFoundException {
+		try {
+			InetAddress host = InetAddress.getLocalHost();
+
+			// establish socket connection to server
+			socket = new Socket(host.getHostName(), 9878);
+
+			// write to socket using ObjectOutputStream
+			oos = new ObjectOutputStream(socket.getOutputStream());
+			//oos.writeObject("ready");
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		oos.writeObject(invitationString);
 
 		// read the server response message

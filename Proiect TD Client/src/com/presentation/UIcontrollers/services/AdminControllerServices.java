@@ -12,26 +12,27 @@ import javafx.scene.control.ListView;
 public class AdminControllerServices {
 
 	InvitationsSocketServices invitationsSocket = new InvitationsSocketServices();
-	
+
 	AdminSocketServices adminSocketServices = new AdminSocketServices();
 
 	public void getAndShowAllUsersAndEvents(ListView<String> eventsList, ListView<String> usersList)
 			throws ClassNotFoundException, IOException, InterruptedException {
 
 		String allUsersAndEventsAsString = adminSocketServices.getAllUsersAndEvents();
-
 		JSONObject json = new JSONObject(allUsersAndEventsAsString);
 		JSONArray events = (JSONArray) json.get("events");
 		JSONArray users = (JSONArray) json.get("users");
+		if (eventsList.getItems().size() == 0 && usersList.getItems().size() == 0) {
+			for (int i = 0; i < events.length(); i++) {
+				JSONObject event = (JSONObject) events.get(i);
+				eventsList.getItems().add(eventsList.getItems().size(), (String) event.get("eventName"));
+			}
 
-		for (int i = 0; i < events.length(); i++) {
-			JSONObject event = (JSONObject) events.get(i);
-			eventsList.getItems().add(eventsList.getItems().size(), (String) event.get("eventName"));
-		}
-
-		for (int i = 0; i < users.length(); i++) {
-			JSONObject user = (JSONObject) users.get(i);
-			usersList.getItems().add(usersList.getItems().size(), (String) user.get("userName"));
+			for (int i = 0; i < users.length(); i++) {
+				JSONObject user = (JSONObject) users.get(i);
+				if (user.get("userRole").equals("user"))
+					usersList.getItems().add(usersList.getItems().size(), (String) user.get("userName"));
+			}
 		}
 	}
 

@@ -66,12 +66,13 @@ public class UserPageController {
 
 	@FXML
 	public void waitForInvitations() throws ClassNotFoundException, IOException{
+		
 		userServices.waitForInvitations(invitations, getUsername());
 	}
 	
 	@FXML
 	public void reserveASpot() throws ClassNotFoundException, IOException {
-		 userServices.confirmSpotOnEvent(username,invitations.getSelectionModel().getSelectedItem());
+		 userServices.confirmSpotOnEvent(username,invitations);
+		 //invitations.getItems().remove(invitations.getSelectionModel().getSelectedIndex());
 	}
-
 }
